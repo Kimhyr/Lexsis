@@ -1,0 +1,57 @@
+!structure Vector<A> = {
+  !property Space(
+    space: U64
+  ): U64 = {
+    . = space;
+    if space < ..Size => {
+      . = ..Size;
+    };
+    datum block: @A = A[space];
+    datum i: U64 = 0;
+    loop |i += 1| < ..Size => {
+      block[i] = ..Data[i];
+      block[i] = [];
+    };
+    ..Data = [];
+    ..Data = block;
+  } => {return .;};
+
+  !property Size: U64 = {
+  
+  } => {return .;};
+
+  !property Data: @A = {
+  
+  } => {return .;};
+
+  !procedure Vector<A>(
+    space: U64 = 2
+  ): @Vector<A> => {
+    datum vec: #@Vector<A>[1] = {
+      Space: U64 = space,
+      Size: U64 = 0,
+      Data: @A[space] = {},
+    };
+    return vec;
+  };
+
+  !operator @?= |e: @| => {
+    datum i: U64 = 0;
+    loop |i += 1| < .Size => {
+      .Data[i] = [];
+    };
+    .Data = [];
+    . #= [];
+  };
+};
+
+procedure Initiate( \\ A cool looking comment!
+  argc: U32, argv: @@U8
+): U64 => {
+  datum vec: @Vector<A>(2);
+  vec = [];
+  datum x: ?I32 = 7;
+  x = 21 + 14;
+  return 0;
+};
+\\ Another cool looking comment!

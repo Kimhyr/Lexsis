@@ -1,0 +1,9 @@
+\\ Cool looking comment!
+procedure Initiate ( 
+	argc: U64, argv: @@U8
+): U64 => { \\ Another cool looking comment!
+	datum x: ?I32 = 7;
+	x = 21 + 14;
+	return 0;
+};
+\\ An even cooler looking comment, compared to the previous two!
